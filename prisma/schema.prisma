@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Model {
+  modelCode   String   @id
+  description String
+
+  units       Unit[]
+}
+
+model Unit {
+  plate       String   @id
+  description String
+  modelCode   String
+  seatCount   Int
+  type        String
+  year        Int
+  
+  model       Model    @relation(fields: [modelCode], references: [modelCode])
+}
