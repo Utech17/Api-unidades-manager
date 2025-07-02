@@ -11,7 +11,7 @@ export class UploadController {
   @Post('image')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: './uploads',
+      destination: 'C:/image-server',
       filename: (_req, file, cb) => {
         const randomName = Array(32).fill(null).map(() => (Math.round(Math.random() * 16)).toString(16)).join('');
         cb(null, `${randomName}${extname(file.originalname)}`);
@@ -19,9 +19,6 @@ export class UploadController {
     }),
   }))
   async uploadUnitImage(@UploadedFile() file: Express.Multer.File) {
-    return {
-      filename: file.filename,
-      path: `/uploads/${file.filename}`,
-    };
+    return this.uploadService.handleFileUpload(file);
   }
 }
