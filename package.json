@@ -4,7 +4,8 @@
 		"start:dev": "nest start --watch",
 		"db:generate": "prisma generate",
 		"db:seed": "ts-node prisma/seed.ts",
-		"db:deploy": "prisma migrate deploy"
+		"db:deploy": "prisma migrate deploy",
+		"db:reset": "prisma migrate reset"
 	},
 	"ts-node": {
 		"transpileOnly": true,
