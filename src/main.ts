@@ -9,6 +9,7 @@ async function bootstrap() {
   app.use(bodyParser.json({ limit: '10mb' }));
   app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
   app.setGlobalPrefix('api/v1');
+  app.enableCors({ origin: true });
   await app.listen(3000);
 }
 bootstrap();
