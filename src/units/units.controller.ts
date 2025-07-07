@@ -7,8 +7,9 @@ export class UnitsController {
   constructor(private readonly unitsService: UnitsService) {}
 
   @Post()
-  create(@Body() unitDto: UnitDto) {
-    return this.unitsService.create(unitDto);
+  create(@Body() body: any) {
+    const { imageBase64, ...unitDto } = body;
+    return this.unitsService.create(unitDto, imageBase64);
   }
 
   @Get()
@@ -22,8 +23,9 @@ export class UnitsController {
   }
 
   @Put(':plate')
-  update(@Param('plate') plate: string, @Body() unitDto: UnitDto) {
-    return this.unitsService.update(plate, unitDto);
+  update(@Param('plate') plate: string, @Body() body: any) {
+    const { imageBase64, ...unitDto } = body;
+    return this.unitsService.update(plate, unitDto, imageBase64);
   }
 
   @Delete(':plate')

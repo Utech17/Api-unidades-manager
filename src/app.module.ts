@@ -9,8 +9,8 @@ import { join } from 'path';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads',
+      rootPath: 'C:/image-server',
+      serveRoot: '/api/v1/images',
     }),
     PrismaModule,
     UnitsModule,

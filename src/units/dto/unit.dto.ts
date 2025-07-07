@@ -5,4 +5,5 @@ export class UnitDto {
   seatCount!: number;
   type!: string;
   year!: number;
+  image?: string;
 }
